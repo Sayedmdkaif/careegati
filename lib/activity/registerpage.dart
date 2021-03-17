@@ -38,58 +38,67 @@ var passwordValue = "";
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
   var  mediaQuiry = MediaQuery.of(context).size;
     return Scaffold(
-      body: ListView(
-        children: [
-         GlobalView.toolBarWidget(context,true),
-          Container(
-            margin: EdgeInsets.only(top:30,left: 10,right: 10),
-            child: Card(shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-
-              child: Column(
-
-                children: [
-
-
-                   showHeading(),
-
-
-                  Form(
-                    key: formKey,
-                    child: Column(
-                      children: <Widget>[
-                        _onLoading(showLoading),
-                        showFirstNameWidget(firstNameController),
-                        showLastNameWidget(lastNameController),
-                        showRadioWidget(),
-                        showCountryDropDown(),
-                        showStateDropDown(),
-                        showCityDropDown(),
-                        showOccupationDropDown(),
-                        showMobileWidget(mobileController),
-                        showEmailWidget(emailController),
-                        showPasswordWidget(passwordController),
-                        showConfirmPasswordWidget(cpasswordController),
-                        showLoginButton()
-
-
-
-                      ],
-                    ),
-                  ),
-
-
-
-
-                ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/starbg.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: ListView(
+          children: [
+           GlobalView.toolBarWidget(context,true),
+            Container(
+              
+              margin: EdgeInsets.only(top:30,left: 10,right: 10),
+              child: Card(shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
 
+                child: Column(
 
-            ),
-          )
+                  children: [
 
-        ],
+
+                     showHeading(),
+
+
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        children: <Widget>[
+                          _onLoading(showLoading),
+                          showFirstNameWidget(firstNameController),
+                          showLastNameWidget(lastNameController),
+                          showRadioWidget(),
+                          showCountryDropDown(),
+                          showStateDropDown(),
+                          showCityDropDown(),
+                          showOccupationDropDown(),
+                          showMobileWidget(mobileController),
+                          showEmailWidget(emailController),
+                          showPasswordWidget(passwordController),
+                          showConfirmPasswordWidget(cpasswordController),
+                          showLoginButton()
+
+
+
+                        ],
+                      ),
+                    ),
+
+
+
+
+                  ],
+                ),
+
+
+              ),
+            )
+
+          ],
+        ),
       ),
     );
   }

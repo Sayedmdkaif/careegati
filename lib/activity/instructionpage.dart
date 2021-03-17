@@ -1,8 +1,11 @@
+import 'package:careergati/activity/quiz_page.dart';
+import 'package:careergati/modal/question.dart';
 import 'package:careergati/util/AppColor.dart';
 import 'package:careergati/util/AppString.dart';
 import 'package:careergati/util/GlobalView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class QuizInstructionPage extends StatefulWidget {
   @override
@@ -17,30 +20,38 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 
     return Scaffold(
-      body: ListView(
-        children: [
-          GlobalView.toolBarWidget(context, true),
-          Container(
-              margin: EdgeInsets.only(top: 30, left: 10, right: 10),
-              child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: Column(children: [
-                    showHeading(),
-                    showLine(1.3),
-                    selectLangHeading(),
-                    showRadioWidget(),
-                    showLine(.7),
-                    showInstruction("1",AppString.introDesc1),
-                    showInstruction("2",AppString.introDesc1),
-                    showInstruction("3",AppString.introDesc1),
-                    showInstruction("4",AppString.introDesc1),
-                    showInstruction("5",AppString.introDesc1),
-                    showLoginButton()
+      body: Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("assets/images/starbg.png"),
+    fit: BoxFit.cover,
+    ),
+    ),
+        child: ListView(
+          children: [
+            GlobalView.toolBarWidget(context, true),
+            Container(
+                margin: EdgeInsets.only(top: 30, left: 10, right: 10),
+                child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Column(children: [
+                      showHeading(),
+                      showLine(1.3),
+                      selectLangHeading(),
+                      showRadioWidget(),
+                      showLine(.7),
+                      showInstruction("1",AppString.introDesc1),
+                      showInstruction("2",AppString.introDesc1),
+                      showInstruction("3",AppString.introDesc1),
+                      showInstruction("4",AppString.introDesc1),
+                      showInstruction("5",AppString.introDesc1),
+                      showLoginButton()
 
-                  ])))
-        ],
+                    ])))
+          ],
+        ),
       ),
     );
   }
@@ -160,8 +171,20 @@ Widget showInstruction(String sn,String title) {
 
           }*/
 
+          List<Question> questions=[];
 
-          //Get.to(QuizInstructionPage());
+          List<dynamic> incorrectAnswers=[];
+          
+          incorrectAnswers.add("Single");
+          incorrectAnswers.add("Secure");
+          incorrectAnswers.add("Solid");
+
+          questions.add(Question("General Knowledge", Type.multiple, Difficulty.easy, "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card", "Subscriber", incorrectAnswers));
+          questions.add(Question("General Knowledge", Type.multiple, Difficulty.easy, "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card", "Subscriber", incorrectAnswers));
+
+
+
+          Get.to(QuizPage(questions:questions,));
 
         },
         textColor: Colors.white,
