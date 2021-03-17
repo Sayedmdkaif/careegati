@@ -11,7 +11,7 @@ class AppColor {
 
   static const Color redColor = const Color(0xFFB71C1C);
   static const Color textColor = const Color(0xff0D0E22);
-  static const Color subTitleTextColor = const Color(0xff797878);
+  static const Color subTitleTextColor = const Color(0xffBFBCBC);
   static const Color lightGray = const Color(0xff717AC7);
 
 

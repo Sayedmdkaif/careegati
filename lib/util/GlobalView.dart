@@ -52,6 +52,8 @@ class GlobalView {
   static var verifyotp = "verifyotp";
   static var verification_status = "verification_status";
 
+
+
   static void createSnackBar(String message, BuildContext context) {
     final snackBar = new SnackBar(
         content: new Text(message),
@@ -151,4 +153,55 @@ class GlobalView {
     prefs.setString(GlobalView.google_pic, dataRes.userData[0].googlePic?? '');
     prefs.setString(GlobalView.profile, dataRes.userData[0].profile?? '' );
   }*/
+
+ static Widget toolBarWidget(BuildContext context,bool showHomeIcon)
+  {
+    return  Container(
+      height: 50,
+      child: Card(
+        margin: EdgeInsets.zero,
+        color: Colors.black,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20.0),
+              bottomRight: Radius.circular(20.0)),
+        ),
+        child: Row(
+          children: [
+            Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                    color: Colors.white,
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    })),
+
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/images/appLogo.png',
+                fit: BoxFit.fill,
+              ),
+            ),
+
+
+          if(showHomeIcon)
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 8,right: 5),
+                child: Align(
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                        color: Colors.white,
+                        icon: Icon(Icons.home,size: 35,),
+                        onPressed: () {
+                        })),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

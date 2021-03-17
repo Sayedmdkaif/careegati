@@ -1,8 +1,10 @@
+import 'package:careergati/activity/registerpage.dart';
 import 'package:careergati/util/AppColor.dart';
 import 'package:careergati/util/GlobalView.dart';
 import 'package:careergati/util/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 import 'package:loading_animations/loading_animations.dart';
 
 class LoginPage extends StatefulWidget {
@@ -66,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               child: Container(
-                margin: EdgeInsets.only(top: 50),
+                margin: EdgeInsets.only(top: 50,bottom: 30),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -83,7 +85,8 @@ class _LoginPageState extends State<LoginPage> {
                       showLoginButton(
                           emailController, passwordController),
                       showLoginWithText(),
-                      showSocialIcons()
+                      showSocialIcons(),
+                      showNewUserText()
                     ],
                   ),
                 ),
@@ -102,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: ClipRRect(
                     borderRadius:
                         BorderRadius.all(Radius.circular(GlobalView.avatarRadius)),
-                    child: Image.asset("assets/images/profilePic.png")),
+                    child: Image.asset("assets/images/profilePic.webp")),
               ),
             ),
           ],
@@ -113,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget showEmailWidget(TextEditingController emailController) {
     return Padding(
-      padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+      padding: EdgeInsets.only(top: 30.0, left: 20.0, right: 20.0),
       child: TextFormField(
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
@@ -289,13 +292,13 @@ class _LoginPageState extends State<LoginPage> {
     return Align(
         alignment: Alignment.center,
         child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: EdgeInsets.only(top:10.0),
             child: Text(
               "OR LOGIN WITH ",
               textAlign: TextAlign.right,
               style: TextStyle(
                 decoration: TextDecoration.none,
-                fontSize: 15.0,
+                fontSize: 17.0,
                 fontFamily: 'Raleway',
                 color: AppColor.colorPrimary,
               ),
@@ -304,13 +307,16 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget showSocialIcons()
   {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Image.asset('assets/images/facebook.png'),
-        Image.asset('assets/images/gmail.png'),
-        Image.asset('assets/images/mobile.png'),
-      ],
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image.asset('assets/images/gmail.webp',height: 35,),
+          Image.asset('assets/images/facebook.webp',height: 35,),
+          Image.asset('assets/images/mobile.webp',height: 35,),
+        ],
+      ),
     );
   }
 
@@ -331,6 +337,27 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 15.0,
                     fontFamily: 'Raleway',
                     color: Colors.black,
+                  ),
+                ))));
+  }
+
+Widget showNewUserText() {
+    return GestureDetector(
+        onTap: () {
+          Get.to(RegisterPage());
+        },
+        child: Align(
+            alignment: Alignment.center,
+            child: Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: Text(
+                  "NEW USER?",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontSize: 15.0,
+                    fontFamily: 'Raleway',
+                    color: AppColor.colorPrimary,
                   ),
                 ))));
   }
