@@ -26,7 +26,6 @@ final formKey = GlobalKey<FormState>();
 bool showLoading = false;
 int radioId = -1;
 
-var num_list = ["1","2","3"];
 List<String> _locations = ['A', 'B', 'C', 'D']; // Option 2
 String _selectedLocation; // Option 2
 bool passwordVisible = true;
@@ -47,7 +46,7 @@ var passwordValue = "";
         ),
         child: ListView(
           children: [
-           GlobalView.toolBarWidget(context,true),
+           GlobalView.toolBarWidget(context,true,true),
             Container(
               
               margin: EdgeInsets.only(top:30,left: 10,right: 10),

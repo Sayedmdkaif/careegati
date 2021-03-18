@@ -1,11 +1,8 @@
 class AppString{
 
 
-  static var  from='';
 
-  static const  appName='Managed Landlord';
-  static const  tenant='Tenant';
-  static const  landlord='Landlord';
+  static const  appName='Career Gati';
 
   static const  intro1='Lorem ipsum';
   static const  intro2='Lorem ipsum';

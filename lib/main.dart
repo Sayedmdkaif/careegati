@@ -1,9 +1,9 @@
-import 'package:careergati/activity/loginpage.dart';
-import 'package:careergati/activity/registerpage.dart';
-import 'package:careergati/activity/splash_screen.dart';
+import 'package:careergati/activity/HomePage.dart';
+import 'package:careergati/activity/birthpage.dart';
+import 'package:careergati/activity/educationpage.dart';
+import 'package:careergati/activity/instructionpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -12,11 +12,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: QuizInstructionPage(),
     );
   }
 }
-

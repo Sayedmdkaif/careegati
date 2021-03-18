@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:careergati/activity/loginpage.dart';
 import 'package:careergati/util/AppColor.dart';
 import 'package:careergati/util/AppString.dart';
 import 'package:connectivity/connectivity.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sweetalert/sweetalert.dart';
+import 'package:vibration/vibration.dart';
 
 class GlobalView {
 
@@ -52,7 +54,13 @@ class GlobalView {
   static var verifyotp = "verifyotp";
   static var verification_status = "verification_status";
 
-
+ static Widget showLine(double d) {
+    return Container(
+      margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+      color: Colors.white,
+      child: (Divider(thickness: d, color: AppColor.subTitleTextColor)),
+    );
+  }
 
   static void createSnackBar(String message, BuildContext context) {
     final snackBar = new SnackBar(
@@ -120,9 +128,17 @@ class GlobalView {
 
   static void showSweetError(String message, BuildContext context) {
     SweetAlert.show(context,
-        style: SweetAlertStyle.error, title: "Ooops", subtitle: message);
+        onPress:  (bool isConfirm) {
+      if (isConfirm) {
+        Get.to(LoginPage());
+        return false;
+      }
+    },
+        style: SweetAlertStyle.error, title: AppString.appName, subtitle: message);
+
+
   }
- static void showSweetSuccess(String message, BuildContext context, String type) {
+ static void showSweetSuccess(String message, BuildContext context) {
     SweetAlert.show(context,
         style: SweetAlertStyle.success, title: AppString.appName, subtitle: message,
         onPress: (bool isConfirm) {
@@ -154,7 +170,7 @@ class GlobalView {
     prefs.setString(GlobalView.profile, dataRes.userData[0].profile?? '' );
   }*/
 
- static Widget toolBarWidget(BuildContext context,bool showHomeIcon)
+ static Widget toolBarWidget(BuildContext context,bool showBackButton,bool showHomeIcon)
   {
     return  Container(
       height: 50,
@@ -168,6 +184,8 @@ class GlobalView {
         ),
         child: Row(
           children: [
+
+            if(showBackButton)
             Align(
                 alignment: Alignment.topLeft,
                 child: IconButton(
@@ -204,4 +222,87 @@ class GlobalView {
       ),
     );
   }
+ static Widget showHeading(String title) {
+    return Padding(
+      padding: EdgeInsets.only(top: 10),
+      child: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          decoration: TextDecoration.none,
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Raleway',
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+
+  static Widget boxImage(String path) {
+    return Container(
+      margin: EdgeInsets.only(left: 30,right: 30),
+        child: Image.asset(path,fit:BoxFit.fill,height: 250,width: double.infinity,));
+
+
+  }
+
+ static void showVibration() {
+
+    Vibration.vibrate(duration: 100);
+  }
+
+ static List getDates(){
+   var dateList=[];
+   for(int i=1;i<32;i++)
+     dateList.add(i.toString());
+   return dateList;
+
+  }
+
+  static List getMonth(){
+   var monthList=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+   return monthList;
+
+  }
+
+  static List getYear(int currentYear){
+   var yearList=[];
+   for(int i=currentYear;i>=1970;i--)
+     yearList.add(i.toString());
+   return yearList;
+
+  }
+
+
+  static List getHours(){
+   var hoursList=[];
+   for(int i=0;i<24;i++)
+     if(i<10)
+       hoursList.add("0"+i.toString());
+     else
+       hoursList.add(i.toString());
+
+
+     return hoursList;
+
+  }
+
+  static List getMinutes(){
+   var hoursList=[];
+   for(int i=0;i<60;i++)
+     if(i<10)
+       hoursList.add("0"+i.toString());
+     else
+       hoursList.add(i.toString());
+
+
+     return hoursList;
+
+  }
+
+
+
+
 }

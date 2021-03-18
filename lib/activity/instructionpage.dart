@@ -29,7 +29,7 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
     ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context, true),
+            GlobalView.toolBarWidget(context,false ,true),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Card(
@@ -37,11 +37,11 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Column(children: [
-                      showHeading(),
-                      showLine(1.3),
+                      GlobalView.showHeading( "PSYCHOMETRIC TEST"),
+                      GlobalView.showLine(1.3),
                       selectLangHeading(),
                       showRadioWidget(),
-                      showLine(.7),
+                      GlobalView.showLine(.7),
                       showInstruction("1",AppString.introDesc1),
                       showInstruction("2",AppString.introDesc1),
                       showInstruction("3",AppString.introDesc1),
@@ -105,22 +105,6 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
     );
   }
 
-  Widget showHeading() {
-    return Padding(
-      padding: EdgeInsets.only(top: 10),
-      child: Text(
-        "PSYCHOMETRIC TEST",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          decoration: TextDecoration.none,
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Raleway',
-          color: Colors.black,
-        ),
-      ),
-    );
-  }
 
   Widget selectLangHeading() {
     return Padding(
@@ -179,8 +163,12 @@ Widget showInstruction(String sn,String title) {
           incorrectAnswers.add("Secure");
           incorrectAnswers.add("Solid");
 
-          questions.add(Question("General Knowledge", Type.multiple, Difficulty.easy, "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card", "Subscriber", incorrectAnswers));
-          questions.add(Question("General Knowledge", Type.multiple, Difficulty.easy, "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card", "Subscriber", incorrectAnswers));
+          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"1"));
+          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"2"));
+          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"3"));
+          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"4"));
+
+
 
 
 
@@ -215,11 +203,5 @@ Widget showInstruction(String sn,String title) {
 
 
 
-  Widget showLine(double d) {
-    return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-      color: Colors.white,
-      child: (Divider(thickness: d, color: AppColor.subTitleTextColor)),
-    );
-  }
+
 }
