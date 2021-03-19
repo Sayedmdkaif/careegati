@@ -8,12 +8,12 @@ import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:loading_animations/loading_animations.dart';
 
-class RegisterPage extends StatefulWidget {
+class ProfileUpdate extends StatefulWidget {
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _ProfileUpdateState createState() => _ProfileUpdateState();
 }
 
-class _RegisterPageState extends State<RegisterPage>{
+class _ProfileUpdateState extends State<ProfileUpdate>{
 
 TextEditingController firstNameController = TextEditingController();
 TextEditingController lastNameController = TextEditingController();
@@ -76,8 +76,6 @@ var passwordValue = "";
                           showOccupationDropDown(),
                           showMobileWidget(mobileController),
                           showEmailWidget(emailController),
-                          showPasswordWidget(passwordController),
-                          showConfirmPasswordWidget(cpasswordController),
                           showLoginButton()
 
 
@@ -358,7 +356,7 @@ Widget showLoginButton() {
             ),
             borderRadius: BorderRadius.all(Radius.circular(10.0))),
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-        child: const Text('Sign Up',
+        child: const Text('UPDATE',
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20.0,
@@ -554,7 +552,7 @@ Widget showHeading() {
     return  Padding(
       padding: EdgeInsets.only(top: 10),
       child: Text(
-        "REGISTRATION FORM",
+        "PROFILE",
         textAlign: TextAlign.center,
         style: TextStyle(
           decoration: TextDecoration.none,

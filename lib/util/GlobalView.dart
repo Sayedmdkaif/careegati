@@ -170,13 +170,16 @@ class GlobalView {
     prefs.setString(GlobalView.profile, dataRes.userData[0].profile?? '' );
   }*/
 
- static Widget toolBarWidget(BuildContext context,bool showBackButton,bool showHomeIcon)
+
+
+
+  static Widget toolBarWidget(BuildContext context,bool showBackButton,bool showHomeIcon)
   {
     return  Container(
       height: 50,
       child: Card(
         margin: EdgeInsets.zero,
-        color: Colors.black,
+        color: AppColor.dark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20.0),

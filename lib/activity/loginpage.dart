@@ -1,3 +1,6 @@
+import 'package:careergati/activity/HomePage.dart';
+import 'package:careergati/activity/forgetpassword.dart';
+import 'package:careergati/activity/loginwithnumber.dart';
 import 'package:careergati/activity/registerpage.dart';
 import 'package:careergati/util/AppColor.dart';
 import 'package:careergati/util/GlobalView.dart';
@@ -232,7 +235,9 @@ class _LoginPageState extends State<LoginPage> {
       margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0, bottom: 20.0),
       child: RaisedButton(
         onPressed: () => {
-          if (formKey.currentState.validate())
+
+        Get.to(HomePage())
+        /*  if (formKey.currentState.validate())
             {
 
 
@@ -258,7 +263,10 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
-            }
+            }*/
+
+
+
         },
         textColor: Colors.white,
         padding: const EdgeInsets.all(0.0),
@@ -314,7 +322,13 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Image.asset('assets/images/gmail.webp',height: 35,),
           Image.asset('assets/images/facebook.webp',height: 35,),
-          Image.asset('assets/images/mobile.webp',height: 35,),
+          GestureDetector(
+              onTap: (){
+
+                Get.to(LoginWithNumber());
+
+              },
+              child: Image.asset('assets/images/mobile.webp',height: 35,)),
         ],
       ),
     );
@@ -323,7 +337,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget showForgetPasswordText() {
     return GestureDetector(
         onTap: () {
-        //  Get.to(ForgetScreen());
+          Get.to(ForgetPassword());
         },
         child: Align(
             alignment: Alignment.topRight,

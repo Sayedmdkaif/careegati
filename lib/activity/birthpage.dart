@@ -1,7 +1,9 @@
+import 'package:careergati/activity/sampleresultpage.dart';
 import 'package:careergati/util/AppColor.dart';
 import 'package:careergati/util/GlobalView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 import 'package:intl/intl.dart';
 
 class BirthPage extends StatefulWidget {
@@ -432,6 +434,7 @@ class _BirthPageState extends State<BirthPage> {
           if (formKey.currentState.validate())
             {
 
+              Get.to(SampleResultPage());
 
             }
 

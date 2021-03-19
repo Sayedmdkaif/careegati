@@ -11,8 +11,7 @@ class AppString{
   static const  introDesc1='In publishing and graphic design, Lorem ipsum is a placeholder text commonly used';
   static const  introDesc2='In publishing and graphic design, Lorem ipsum is a placeholder text commonly used';
   static const  introDesc3='In publishing and graphic design, Lorem ipsum is a placeholder text commonly used';
-
-
+  static const  introDesc4='In publishing and graphic design';
   static String signText="Sign in to discover amazing things around you";
   static String pwdText="Do not share your password to anyone";
   static String signupText="Join The ONE Lifestyle";
