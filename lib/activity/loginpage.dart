@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:careergati/activity/HomePage.dart';
 import 'package:careergati/activity/forgetpassword.dart';
 import 'package:careergati/activity/loginwithnumber.dart';
@@ -31,87 +33,96 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 
-    return Scaffold(
-        body: Stack(children: [
+    return WillPopScope(
+      onWillPop: () async {
+        exit(0);
+        return true;
+      },
+      child: Scaffold(
+          body: Stack(children: [
 
-          Container(
+            Container(
 
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/bg.webp"),
-                fit: BoxFit.cover,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/bg.webp"),
+                  fit: BoxFit.cover,
+                ),
               ),
+
             ),
 
-          ),
+            ListView(children: [showMideWidget()])
 
-          showMideWidget()
-
-        ],
-    ));
+          ],
+      )),
+    );
   }
 
   Widget showMideWidget() {
-    return Align(
-      alignment: Alignment.center,
-      child: Container(
-        child: Stack(
-          children: <Widget>[
-            Container(
-              margin:
-                  EdgeInsets.only(left: 30, right: 30, top: 65),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.black,
-                  style: BorderStyle.solid,
-                  width: 2.0,
+    return Container(
+      margin: EdgeInsets.only(top: 100,bottom: 30),
+      child: Align(
+        alignment: Alignment.center,
+        child: Container(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                margin:
+                    EdgeInsets.only(left: 30, right: 30, top: 65),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    style: BorderStyle.solid,
+                    width: 2.0,
+                  ),
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
 
-              child: Container(
-                margin: EdgeInsets.only(top: 50,bottom: 30),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-
-
-               Form(
-                key: formKey,
+                child: Container(
+                  margin: EdgeInsets.only(top: 50,bottom: 30),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      _onLoading(showLoading),
-                      showEmailWidget(emailController),
-                      showPasswordWidget(passwordController),
-                      showForgetPasswordText(),
-                      showLoginButton(
-                          emailController, passwordController),
-                      showLoginWithText(),
-                      showSocialIcons(),
-                      showNewUserText()
+
+
+                 Form(
+                  key: formKey,
+                    child: Column(
+                      children: <Widget>[
+                        _onLoading(showLoading),
+                        showEmailWidget(emailController),
+                        showPasswordWidget(passwordController),
+                        showForgetPasswordText(),
+                        showLoginButton(
+                            emailController, passwordController),
+                        showLoginWithText(),
+                        showSocialIcons(),
+                        showNewUserText()
+                      ],
+                    ),
+                  ),
+
+
                     ],
                   ),
                 ),
-
-
-                  ],
+              ),
+              Positioned(
+                left: GlobalView.padding,
+                right: GlobalView.padding,
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 60,
+                  child: ClipRRect(
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(GlobalView.avatarRadius)),
+                      child: Image.asset("assets/images/profilePic.webp")),
                 ),
               ),
-            ),
-            Positioned(
-              left: GlobalView.padding,
-              right: GlobalView.padding,
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 60,
-                child: ClipRRect(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(GlobalView.avatarRadius)),
-                    child: Image.asset("assets/images/profilePic.webp")),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -365,13 +376,14 @@ Widget showNewUserText() {
             child: Padding(
                 padding: EdgeInsets.only(top: 30),
                 child: Text(
-                  "NEW USER?",
+                  "NEW USER ?",
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
                     fontFamily: 'Raleway',
-                    color: AppColor.colorPrimary,
+                    color: AppColor.black,
                   ),
                 ))));
   }

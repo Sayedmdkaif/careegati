@@ -69,25 +69,29 @@ class _HomePageState extends State<HomePage> {
               fit: BoxFit.cover,
             ),
           ),
-          child: ListView(children: [toolBarHomeWidget(),
-            imageSlider(),
-            showTextDescWidget(),
-            showHeading("Give right direction and speed to your career in 3 easy steps"),
-          SizedBox(height: 5,),
-          Divider(thickness: 1,indent: 20,endIndent: 20, color: AppColor.subTitleTextColor),
+          child: Container(
+            margin: EdgeInsets.only(bottom: 0),
 
-            Container(
-              margin: EdgeInsets.only(left: 20,right: 20,top: 10),
-              child: Image.asset(
-                'assets/images/homePic.webp',
-                fit: BoxFit.fill,
-                height: 100,
-                width: double.infinity,
+            child: ListView(children: [toolBarHomeWidget(),
+              imageSlider(),
+              showTextDescWidget(),
+              showHeading("Give right direction and speed to your career in 3 easy steps"),
+            SizedBox(height: 5,),
+            Divider(thickness: 1,indent: 20,endIndent: 20, color: AppColor.subTitleTextColor),
+
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 20),
+                child: Image.asset(
+                  'assets/images/homePic.webp',
+                  fit: BoxFit.fill,
+                  height: 100,
+                  width: double.infinity,
+                ),
               ),
-            ),
 
 
-          ]),
+            ]),
+          ),
         ),
         drawer: drawerWidget()
       ),
@@ -102,7 +106,7 @@ class _HomePageState extends State<HomePage> {
         textAlign: TextAlign.center,
         style: TextStyle(
           decoration: TextDecoration.none,
-          fontSize: 23.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.bold,
           fontFamily: 'Raleway',
           color: Colors.white,
@@ -130,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   AppString.introDesc1+" "+AppString.introDesc1,
                   style: TextStyle(
                     decoration: TextDecoration.none,
-                    fontSize: 18.0,
+                    fontSize: 16.0,
                     fontFamily: 'Raleway',
                     color: Colors.black,
                   ),
@@ -147,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                           AppString.introDesc1,
                           style: TextStyle(
                             decoration: TextDecoration.none,
-                            fontSize: 18.0,
+                            fontSize: 16.0,
                             fontFamily: 'Raleway',
                             color: Colors.black,
                           ),
@@ -422,97 +426,192 @@ class _HomePageState extends State<HomePage> {
                      ),
                    ),
                  ),
-                 ListTile(
-                   leading: Icon(
-                     Icons.file_copy_sharp,
-                     size: 30,
-                     color: AppColor.black,
-                   ),
-                   trailing: Icon(
-                     Icons.arrow_forward,
-                     size: 30,
-                     color: AppColor.black,
-                   ),
-                   title: Text(
-                     "Aptitude Test",
-                     style: TextStyle(fontSize: 18,color: AppColor.black),
-                   ),
-                   onTap: () {
-                     Navigator.pop(context);
-                   },
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Container(
+                       margin: EdgeInsets.all(5),
+                       child: Card(
+                         shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.only(topRight:Radius.circular(20)),
+                         ),
+                         elevation: 5,
+                         child: IconButton(
+                             color: Colors.black,
+                             icon: Icon(Icons.file_copy_sharp),
+                             ),
+                       ),
+                     ),
+
+                     Align(
+                       alignment: Alignment.center,
+                       child: Text(
+                           "  Aptitude Test",
+                           style: TextStyle(fontSize: 18,color: AppColor.black)
+                       ),
+                     ),
+
+                     Expanded(
+                       child: Row(
+                         mainAxisAlignment: MainAxisAlignment.end,
+                         children: [
+                           IconButton(
+                               color: Colors.black,
+                               icon: Icon(Icons.arrow_forward),
+                              ),
+                         ],
+                       ),
+                     ),
+                   ],
                  ),
                  Divider(
                    indent: 10,
                    endIndent: 10,
                  ),
-                 ListTile(
-                   leading: Icon(
-                     Icons.file_copy_sharp,
-                     size: 30,
-                     color: AppColor.black,
+
+                 GestureDetector(
+                  onTap: (){
+                    Get.to(PastTest());
+                  },
+                   child: Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                       Container(
+                         margin: EdgeInsets.all(5),
+                         child: Card(
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.only(topRight:Radius.circular(20)),
+                           ),
+                           elevation: 5,
+                           child: IconButton(
+                               color: Colors.black,
+                               icon: Icon(Icons.file_copy_sharp),
+                              ),
+                         ),
+                       ),
+
+                       Align(
+                         alignment: Alignment.center,
+                         child: Text(
+                           "  Past Test",
+                           style: TextStyle(fontSize: 18,color: AppColor.black)
+                         ),
+                       ),
+
+                       Expanded(
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                             IconButton(
+                                 color: Colors.black,
+                                 icon: Icon(Icons.arrow_forward),
+                                ),
+                           ],
+                         ),
+                       ),
+                     ],
                    ),
-                   trailing: Icon(
-                     Icons.arrow_forward,
-                     size: 30,
-                     color: AppColor.black,
-                   ),
-                   title: Text(
-                     "Past Test",
-                     style: TextStyle(fontSize: 18,color: AppColor.black),
-                   ),
-                   onTap: () {
-                     Navigator.pop(context);
-                     Get.to(PastTest());
-                   },
                  ),
+
                  Divider(
                    indent: 10,
                    endIndent: 10,
                  ),
-                 ListTile(
-                   leading: Icon(
-                     Icons.lock,
-                     size: 30,
-                     color: AppColor.black,
-                   ),
-                   trailing: Icon(
-                     Icons.arrow_forward,
-                     size: 30,
-                     color: AppColor.black,
-                   ),
-                   title: Text(
-                     "Change Password",
-                     style: TextStyle(fontSize: 18,color: AppColor.black),
-                   ),
-                   onTap: () {
-                     Navigator.pop(context);
+
+                 GestureDetector(
+                   onTap: (){
                      Get.to(ChangePassword());
                    },
+                   child: Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                       Container(
+                         margin: EdgeInsets.all(5),
+                         child: Card(
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.only(topRight:Radius.circular(20)),
+                           ),
+                           elevation: 5,
+                           child: IconButton(
+                               color: Colors.black,
+                               icon: Icon(Icons.lock),
+                               ),
+                         ),
+                       ),
+
+                       Align(
+                         alignment: Alignment.center,
+                         child: Text(
+                             "  Change Password",
+                             style: TextStyle(fontSize: 18,color: AppColor.black)
+                         ),
+                       ),
+
+                       Expanded(
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                             IconButton(
+                                 color: Colors.black,
+                                 icon: Icon(Icons.arrow_forward),
+                                ),
+                           ],
+                         ),
+                       ),
+                     ],
+                   ),
                  ),
+
                  Divider(
                    indent: 10,
                    endIndent: 10,
                  ),
-                 ListTile(
-                   leading: Icon(
-                     Icons.login_outlined,
-                     size: 30,
-                     color: AppColor.black,
+
+             GestureDetector(
+               onTap: (){
+                 Navigator.pop(context);
+                askToLogout();
+               },
+               child: Row(
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 children: [
+                   Container(
+                     margin: EdgeInsets.all(5),
+                     child: Card(
+                       shape: RoundedRectangleBorder(
+                         borderRadius: BorderRadius.only(topRight:Radius.circular(20)),
+                       ),
+                       elevation: 5,
+                       child: IconButton(
+                           color: Colors.black,
+                           icon: Icon(Icons.login_outlined),
+                          ),
+                     ),
                    ),
-                   trailing: Icon(
-                     Icons.arrow_forward,
-                     size: 30,
-                     color: AppColor.black,
+
+                   Align(
+                     alignment: Alignment.center,
+                     child: Text(
+                         "  Logout",
+                         style: TextStyle(fontSize: 18,color: AppColor.black)
+                     ),
                    ),
-                   title: Text(
-                     "Logout",
-                     style: TextStyle(fontSize: 18,color: AppColor.black),
+
+                   Expanded(
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       children: [
+                             IconButton(
+                             color: Colors.black,
+                             icon: Icon(Icons.arrow_forward),),
+                           ],
+                     ),
                    ),
-                   onTap: () {
-                     Navigator.pop(context);
-                     askToLogout();
-                   },
-                 ),
+                 ],
+               ),
+             ),
+
+
                  Divider(
                    indent: 10,
                    endIndent: 10,

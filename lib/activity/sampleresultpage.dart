@@ -186,7 +186,7 @@ class _SampleResultPageState extends State<SampleResultPage> {
           child: const Text('GET YOUR FULL RESULT',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 16.0,
                   fontFamily: 'Raleway',
                   fontWeight: FontWeight.w300,
                   color: Colors.white)),

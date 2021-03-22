@@ -53,7 +53,7 @@ bool showLoading = false;
 
                      showHeading(),
 
-                    SizedBox(height: 60,),
+                    SizedBox(height: 40,),
 
 
                     Form(
@@ -64,7 +64,7 @@ bool showLoading = false;
 
                           showEmailWidget(emailController),
 
-                          SizedBox(height: 30,),
+                          SizedBox(height: 20,),
                           showLoginButton()
 
 
@@ -109,7 +109,7 @@ Widget showHeading() {
 }
 Widget showEmailWidget(TextEditingController emailController) {
   return Padding(
-    padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+    padding: EdgeInsets.only(top: 0.0, left: 20.0, right: 20.0),
     child: TextFormField(
       controller: emailController,
       keyboardType: TextInputType.emailAddress,

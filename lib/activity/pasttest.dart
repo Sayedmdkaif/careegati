@@ -110,7 +110,7 @@ Widget showResultWidget(String date,String name) {
             date,
             style: TextStyle(
               decoration: TextDecoration.none,
-              fontSize: 25.0,
+              fontSize: 18.0,
               fontFamily: 'Raleway',
               fontWeight: FontWeight.w500,
               color: AppColor.buttonColor,
@@ -121,7 +121,7 @@ Widget showResultWidget(String date,String name) {
             name,
             style: TextStyle(
               decoration: TextDecoration.none,
-              fontSize: 25.0,
+              fontSize: 18.0,
               fontFamily: 'Raleway',
               fontWeight: FontWeight.w500,
               color: AppColor.lightGray,

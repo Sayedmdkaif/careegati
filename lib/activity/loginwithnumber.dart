@@ -53,7 +53,7 @@ bool showLoading = false;
 
                      showHeading(),
 
-                    SizedBox(height: 60,),
+                    SizedBox(height: 40,),
 
 
                     Form(
@@ -64,7 +64,7 @@ bool showLoading = false;
 
                           showMobileWidget(mobileController),
 
-                          SizedBox(height: 30,),
+                          SizedBox(height: 20,),
                           showLoginButton()
 
 

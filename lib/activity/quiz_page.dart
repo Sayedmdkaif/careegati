@@ -66,7 +66,7 @@ class _QuizPageState extends State<QuizPage> {
                 children: [
                   GlobalView.toolBarWidget(context, false, false),
                   Container(
-                    margin: EdgeInsets.only(top: 30, left: 10, right: 10),
+                    margin: EdgeInsets.only(top: 30, left: 10, right: 10,bottom: 20),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -200,10 +200,12 @@ class _QuizPageState extends State<QuizPage> {
               Container(
                 // min sizes for Material buttons
                 alignment: Alignment.center,
-                child: const Text('Next    ',
+                child: Text(_currentIndex == (widget.questions.length - 1)
+                    ? "Submit   "
+                    : "Next   ",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 16.0,
                         fontWeight: FontWeight.w300,
                         color: Colors.white)),
               ),
@@ -251,7 +253,7 @@ class _QuizPageState extends State<QuizPage> {
                 child: const Text('  PREVIOUS  ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 16.0,
                         fontWeight: FontWeight.w300,
                         color: Colors.white)),
               ),
@@ -302,7 +304,7 @@ class _QuizPageState extends State<QuizPage> {
                         },
                       ),
                       SizedBox(
-                        width: 20,
+                        height: 10,
                       ),
                       Text(
                         HtmlUnescape()
@@ -406,10 +408,16 @@ class _QuizPageState extends State<QuizPage> {
 
   Widget showButtonWidget() {
     return Container(
-      alignment: Alignment.bottomCenter,
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-        if (_currentIndex > 0) showPreviousButton(),
-        showNextButton()
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+
+
+        if (_currentIndex > 0)
+          ClipRRect(child: showPreviousButton()),
+
+        
+        ClipRRect(child: showNextButton())
       ]),
     );
   }

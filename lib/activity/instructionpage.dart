@@ -132,7 +132,7 @@ Widget showInstruction(String sn,String title) {
           sn+" . "+title,
           style: TextStyle(
             decoration: TextDecoration.none,
-            fontSize: 18.0,
+            fontSize: 16.0,
             fontFamily: 'Raleway',
             color: Colors.black,
           ),
@@ -147,32 +147,33 @@ Widget showInstruction(String sn,String title) {
       margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 30.0, bottom: 20.0),
       child: RaisedButton(
         onPressed: () {
-          /*if (formKey.currentState.validate()) {
-          if (!GlobalView.checkInternet()) {
-            GlobalView.showSweetError(
-                "Please check your internet connection", context);
-          } else {
 
-          }*/
+          if (radioId == -1)
+            GlobalView.createSnackBar("Please select language", context);
+          else {
+            List<Question> questions = [];
+            List<dynamic> incorrectAnswers = [];
 
-          List<Question> questions=[];
+            incorrectAnswers.add("Single");
+            incorrectAnswers.add("Secure");
+            incorrectAnswers.add("Solid");
 
-          List<dynamic> incorrectAnswers=[];
-          
-          incorrectAnswers.add("Single");
-          incorrectAnswers.add("Secure");
-          incorrectAnswers.add("Solid");
+            questions.add(Question(
+                "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
+                "Subscriber", incorrectAnswers, "1"));
+            questions.add(Question(
+                "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
+                "Subscriber", incorrectAnswers, "2"));
+            questions.add(Question(
+                "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
+                "Subscriber", incorrectAnswers, "3"));
+            questions.add(Question(
+                "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
+                "Subscriber", incorrectAnswers, "4"));
 
-          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"1"));
-          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"2"));
-          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"3"));
-          questions.add(Question("What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?", "Subscriber", incorrectAnswers,"4"));
 
-
-
-
-
-          Get.to(QuizPage(questions:questions,));
+            Get.to(QuizPage(questions: questions,));
+          }
 
         },
         textColor: Colors.white,

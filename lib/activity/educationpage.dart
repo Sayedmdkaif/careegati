@@ -30,7 +30,7 @@ class _EducationPageState extends State<EducationPage> {
     ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context,true ,true),
+            GlobalView.toolBarWidget(context,false ,false),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Card(

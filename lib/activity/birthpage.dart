@@ -51,7 +51,7 @@ class _BirthPageState extends State<BirthPage> {
         ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context, true, true),
+            GlobalView.toolBarWidget(context, true, false),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Card(
@@ -147,7 +147,6 @@ class _BirthPageState extends State<BirthPage> {
         border: Border.all(
           color: AppColor.colorPrimary,
           style: BorderStyle.solid,
-          width: 1,
         ),
         borderRadius: BorderRadius.circular(5.0),
       ),
@@ -160,7 +159,7 @@ class _BirthPageState extends State<BirthPage> {
                   borderSide: BorderSide(color: AppColor.colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
-          hint: Text('Hour'),
+          hint: Text('  H'),
           // Not necessary for Option 1
           value: selectedHour,
           onChanged: (newValue) {
@@ -198,7 +197,7 @@ class _BirthPageState extends State<BirthPage> {
                   borderSide: BorderSide(color: AppColor.colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
-          hint: Text('Minute'),
+          hint: Text('  M'),
           // Not necessary for Option 1
           value: selectedMinute,
           onChanged: (newValue) {
@@ -236,7 +235,7 @@ class _BirthPageState extends State<BirthPage> {
                   borderSide: BorderSide(color: AppColor.colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
-          hint: Text('Second'),
+          hint: Text('  S'),
           // Not necessary for Option 1
           value: selectedSecond,
           onChanged: (newValue) {
@@ -324,7 +323,7 @@ class _BirthPageState extends State<BirthPage> {
                   borderSide: BorderSide(color: AppColor.colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
-          hint: Text('DD'),
+          hint: Text('  DD'),
           // Not necessary for Option 1
           value: selectedDate,
           onChanged: (newValue) {
@@ -361,7 +360,7 @@ class _BirthPageState extends State<BirthPage> {
                   borderSide: BorderSide(color: AppColor.colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
-          hint: Text('MM'),
+          hint: Text('  MM'),
           // Not necessary for Option 1
           value: selectedMonth,
           onChanged: (newValue) {
@@ -399,7 +398,7 @@ class _BirthPageState extends State<BirthPage> {
                   borderSide: BorderSide(color: AppColor.colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
-          hint: Text('YY'),
+          hint: Text('  YY'),
           // Not necessary for Option 1
           value: selectedYear,
           onChanged: (newValue) {
