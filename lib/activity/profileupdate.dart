@@ -5,6 +5,7 @@ import 'package:careergati/util/validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/route_manager.dart';
 import 'package:loading_animations/loading_animations.dart';
 
@@ -46,7 +47,7 @@ var passwordValue = "";
         ),
         child: ListView(
           children: [
-           GlobalView.toolBarWidget(context,true,false),
+           toolBarWidget(context,true,false),
             Container(
               
               margin: EdgeInsets.only(top:30,left: 10,right: 10),
@@ -121,155 +122,25 @@ Widget showMobileWidget(TextEditingController mobileController) {
           color: Colors.grey,
         ),
         helperText: 'Please Enter Mobile',
-        prefixIcon: Icon(Icons.phone, color: AppColor.colorPrimary),
+        prefixIcon: Icon(FontAwesomeIcons.mobileAlt, color: colorPrimary),
         hintStyle: TextStyle(color: Colors.grey),
         filled: true,
         fillColor: Colors.white70,
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(12.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-      ),
-    ),
-  );
-}
-
-Widget showPasswordWidget(TextEditingController pwdController) {
-  var enableObscureText = true;
-  var showSuffixIcon = true;
-
-  return Padding(
-    padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-    child: TextFormField(
-      controller: pwdController,
-      cursorColor: Theme.of(context).cursorColor,
-      autocorrect: true,
-      obscureText: enableObscureText == true ? passwordVisible : false,
-      validator: (value) {
-        if (value.isEmpty)
-          return 'Please enter password';
-        else if (value.length < 5)
-          return 'Please enter atleast 6 digit password';
-        else {
-         // this.passwordValue = value;
-          return null;
-        }
-      },
-      decoration: InputDecoration(
-        labelText: 'Password',
-        labelStyle: TextStyle(
-          color: Colors.grey,
-        ),
-        helperText: 'Please Enter Password',
-        prefixIcon: Icon(Icons.lock_open, color: AppColor.colorPrimary),
-        hintStyle: TextStyle(color: Colors.grey),
-        filled: true,
-        fillColor: Colors.white70,
-        suffixIcon: showSuffixIcon == true
-            ? IconButton(
-          icon: Icon(
-            passwordVisible ? Icons.visibility_off : Icons.visibility,
-            color: AppColor.colorPrimary,
-          ),
-          onPressed: () {
-            setState(() {
-              passwordVisible = !passwordVisible;
-            });
-          },
-        )
-            : null,
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-      ),
-    ),
-  );
-}
-
-Widget showConfirmPasswordWidget(TextEditingController cpwdController) {
-  var enableObscureText = true;
-  var showSuffixIcon = true;
-
-  return Padding(
-    padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-    child: TextFormField(
-      controller: cpwdController,
-      cursorColor: Theme.of(context).cursorColor,
-      autocorrect: true,
-      obscureText: enableObscureText == true ? cpasswordVisible : false,
-      validator: (value) {
-        if (value.isEmpty)
-          return 'Please enter confirm password';
-        else if (value.length < 5)
-          return 'Please enter atleast 6 digit confirm password';
-        else if (value.trim() != passwordValue.trim()) {
-          return 'Confirm password do not matched';
-        } else
-          return null;
-      },
-      decoration: InputDecoration(
-        labelText: 'Confirm Password',
-        labelStyle: TextStyle(
-          color: Colors.grey,
-        ),
-        helperText: 'Please Enter Confirm Password',
-        prefixIcon: Icon(Icons.security, color: AppColor.colorPrimary),
-        hintStyle: TextStyle(color: Colors.grey),
-        filled: true,
-        fillColor: Colors.white70,
-        suffixIcon: showSuffixIcon == true
-            ? IconButton(
-          icon: Icon(
-            cpasswordVisible ? Icons.visibility_off : Icons.visibility,
-            color: AppColor.colorPrimary,
-          ),
-          onPressed: () {
-            setState(() {
-              cpasswordVisible = !cpasswordVisible;
-            });
-          },
-        )
-            : null,
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
       ),
     ),
@@ -298,25 +169,25 @@ Widget showEmailWidget(TextEditingController emailController) {
           color: Colors.grey,
         ),
         helperText: 'Please Enter Email',
-        prefixIcon: Icon(Icons.email, color: AppColor.colorPrimary),
+        prefixIcon: Icon(FontAwesomeIcons.envelope, color: colorPrimary),
         hintStyle: TextStyle(color: Colors.grey),
         filled: true,
         fillColor: Colors.white70,
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(12.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
       ),
     ),
@@ -350,8 +221,8 @@ Widget showLoginButton() {
         decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: <Color>[
-                AppColor.buttonColor,
-                AppColor.buttonColor,
+                buttonColor,
+                buttonColor,
               ],
             ),
             borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -382,7 +253,7 @@ Widget _onLoading(bool value) {
         borderColor: Colors.white,
         borderSize: 3.0,
         size: 40.0,
-        backgroundColor: AppColor.colorPrimary,
+        backgroundColor: colorPrimary,
         duration: Duration(milliseconds: 500),
       ),
     ),
@@ -413,25 +284,25 @@ Widget _onLoading(bool value) {
             ),
             helperText: 'Please Enter First Name',
             prefixIcon:
-            Icon(Icons.supervised_user_circle_sharp, color: AppColor.colorPrimary),
+            Icon(FontAwesomeIcons.user, color: colorPrimary),
             hintStyle: TextStyle(color: Colors.grey),
             filled: true,
             fillColor: Colors.white70,
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
           ),
         ),
@@ -457,25 +328,25 @@ Widget _onLoading(bool value) {
             ),
             helperText: 'Please Enter Last Name',
             prefixIcon:
-            Icon(Icons.supervised_user_circle_sharp, color: AppColor.colorPrimary),
+            Icon(FontAwesomeIcons.user, color: colorPrimary),
             hintStyle: TextStyle(color: Colors.grey),
             filled: true,
             fillColor: Colors.white70,
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
           ),
         ),
@@ -497,7 +368,7 @@ Widget showRadioWidget() {
             style: TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.w400,
-                color: AppColor.textColor),
+                color: textColor),
           ),
           flex: 1,
         ),
@@ -510,7 +381,7 @@ Widget showRadioWidget() {
              "Male",
             ),
             leading: Radio(
-              activeColor: AppColor.colorPrimary,
+              activeColor: colorPrimary,
               value: 1,
               groupValue: radioId,
               onChanged: (value) {
@@ -531,7 +402,7 @@ Widget showRadioWidget() {
               "Female",
             ),
             leading: Radio(
-              activeColor: AppColor.colorPrimary,
+              activeColor: colorPrimary,
               value: 2,
               groupValue: radioId,
               onChanged: (value) {
@@ -570,7 +441,7 @@ Widget showHeading() {
   return Container(
     decoration: BoxDecoration(
       border: Border.all(
-        color: AppColor.colorPrimary,
+        color: colorPrimary,
         style: BorderStyle.solid,
         width: 1,
       ),
@@ -581,9 +452,10 @@ Widget showHeading() {
     child: Padding(
       padding: EdgeInsets.only(left: 2,right: 2),
       child: DropdownButtonFormField(
+        icon:  Icon(FontAwesomeIcons.caretSquareDown, color: colorPrimary),
         decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColor.colorPrimary))),
+                borderSide: BorderSide(color: colorPrimary))),
         iconEnabledColor: Colors.black,
         isExpanded: true,
         hint: Text('Choose Country'), // Not necessary for Option 1
@@ -610,7 +482,7 @@ Widget showHeading() {
   return Container(
     decoration: BoxDecoration(
       border: Border.all(
-        color: AppColor.colorPrimary,
+        color: colorPrimary,
         style: BorderStyle.solid,
         width: 1,
       ),
@@ -622,9 +494,10 @@ Widget showHeading() {
       padding: EdgeInsets.only(left: 2,right: 2),
 
       child: DropdownButtonFormField(
+        icon:  Icon(FontAwesomeIcons.caretSquareDown, color: colorPrimary),
         decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColor.colorPrimary))),
+                borderSide: BorderSide(color: colorPrimary))),
         iconEnabledColor: Colors.black,
         isExpanded: true,
         hint: Text('Choose State'), // Not necessary for Option 1
@@ -650,7 +523,7 @@ Widget showHeading() {
   return Container(
     decoration: BoxDecoration(
       border: Border.all(
-        color: AppColor.colorPrimary,
+        color: colorPrimary,
         style: BorderStyle.solid,
         width: 1,
       ),
@@ -661,9 +534,10 @@ Widget showHeading() {
     child: Padding(
       padding: EdgeInsets.only(left: 2,right: 2),
       child: DropdownButtonFormField(
+        icon:  Icon(FontAwesomeIcons.caretSquareDown, color: colorPrimary),
         decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColor.colorPrimary))),
+                borderSide: BorderSide(color: colorPrimary))),
         iconEnabledColor: Colors.black,
         isExpanded: true,
         hint: Text('Choose City'), // Not necessary for Option 1
@@ -690,7 +564,7 @@ Widget showHeading() {
   return Container(
     decoration: BoxDecoration(
       border: Border.all(
-        color: AppColor.colorPrimary,
+        color: colorPrimary,
         style: BorderStyle.solid,
         width: 1,
       ),
@@ -701,9 +575,10 @@ Widget showHeading() {
     child: Padding(
       padding: EdgeInsets.only(left: 2,right: 2),
       child: DropdownButtonFormField(
+        icon:  Icon(FontAwesomeIcons.caretSquareDown, color: colorPrimary),
         decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColor.colorPrimary))),
+                borderSide: BorderSide(color: colorPrimary))),
         iconEnabledColor: Colors.black,
         isExpanded: true,
         hint: Text('Choose Occupation'), // Not necessary for Option 1

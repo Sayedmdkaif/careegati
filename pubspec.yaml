@@ -55,6 +55,9 @@ dependencies:
   vibration: ^1.7.3
   date_format: ^2.0.2
   pie_chart: ^5.0.0
+  flutter_launcher_icons: ^0.7.3
+  flutter_launcher_name: ^0.0.1
+  font_awesome_flutter: ^8.2.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
@@ -63,6 +66,20 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  retrofit_generator: any
+  build_runner: any
+
+flutter_launcher_name:
+  name: "yourNewAppLauncherName"
+
+flutter_icons:
+  image_path_android: "assets/images/appLogo.png"
+  image_path_ios: "assets/images/appLogo.png"
+  android: true
+  ios: true
+
+
 
   retrofit_generator: any
   build_runner: any

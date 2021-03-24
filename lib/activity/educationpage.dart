@@ -30,7 +30,7 @@ class _EducationPageState extends State<EducationPage> {
     ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context,false ,false),
+           toolBarWidget(context,false ,false),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Card(
@@ -40,8 +40,8 @@ class _EducationPageState extends State<EducationPage> {
                     child: Column(children: [
 
                       SizedBox(height: 30,),
-                      GlobalView.boxImage("assets/images/studentPic.webp"),
-                      GlobalView.showHeading("EDUCATION DETAILS"),
+                     boxImage("assets/images/studentPic.webp"),
+                     showHeading("EDUCATION DETAILS"),
 
                       showLoginButton()
 
@@ -77,8 +77,8 @@ class _EducationPageState extends State<EducationPage> {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -101,7 +101,7 @@ class _EducationPageState extends State<EducationPage> {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 10),
       color: Colors.white,
-      child: (Divider(thickness: d, color: AppColor.subTitleTextColor)),
+      child: (Divider(thickness: d, color: subTitleTextColor)),
     );
   }
 }

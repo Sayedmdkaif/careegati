@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:careergati/activity/changepassword.dart';
+import 'package:careergati/activity/instructionpage.dart';
 import 'package:careergati/activity/loginpage.dart';
 import 'package:careergati/activity/pasttest.dart';
 import 'package:careergati/activity/profileupdate.dart';
@@ -12,6 +13,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -77,7 +79,7 @@ class _HomePageState extends State<HomePage> {
               showTextDescWidget(),
               showHeading("Give right direction and speed to your career in 3 easy steps"),
             SizedBox(height: 5,),
-            Divider(thickness: 1,indent: 20,endIndent: 20, color: AppColor.subTitleTextColor),
+            Divider(thickness: 1,indent: 20,endIndent: 20, color: subTitleTextColor),
 
               Container(
                 margin: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 20),
@@ -159,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                         flex: 1,
                         child:  Image.asset('assets/images/booksPic.webp',height:80,fit: BoxFit.cover,))
-                    
+
 
 
                   ],
@@ -306,19 +308,19 @@ class _HomePageState extends State<HomePage> {
   Future<void> getSPValue() async {
     final prefs = await SharedPreferences.getInstance();
 
-    uName = prefs.getString(GlobalView.u_name);
-    uEmail = prefs.getString(GlobalView.u_email);
-    user_id = prefs.getString(GlobalView.user_id);
+    uName = prefs.getString(u_name);
+    uEmail = prefs.getString(u_email);
+    user_id = prefs.getString(user_id);
 
-    if (prefs.getString(GlobalView.isGoogleLogin) == "true" &&
-        prefs.getString(GlobalView.google_pic) != null &&
-        prefs.getString(GlobalView.google_pic).isNotEmpty) {
-      uPic = prefs.getString(GlobalView.google_pic);
-    } else if (prefs.getString(GlobalView.profile) != null &&
-        prefs.getString(GlobalView.profile).isNotEmpty) {
-      uPic = GlobalView.profilePath + prefs.getString(GlobalView.profile);
+    if (prefs.getString(isGoogleLogin) == "true" &&
+        prefs.getString(google_pic) != null &&
+        prefs.getString(google_pic).isNotEmpty) {
+      uPic = prefs.getString(google_pic);
+    } else if (prefs.getString(profile) != null &&
+        prefs.getString(profile).isNotEmpty) {
+      uPic =profilePath + prefs.getString(profile);
     } else
-      uPic = GlobalView.placeholderPic;
+      uPic =placeholderPic;
 
     print('kaifpic' + uPic);
 
@@ -364,7 +366,7 @@ class _HomePageState extends State<HomePage> {
         currentTime.difference(backbuttonpressedTime) > Duration(seconds: 3);
     if (backButton) {
       backbuttonpressedTime = currentTime;
-      GlobalView.createSnackBar("Please click back again to exit", context);
+     createSnackBar("Please click back again to exit", context);
       return false;
     }
     exit(0);
@@ -397,12 +399,12 @@ class _HomePageState extends State<HomePage> {
                children: <Widget>[
                  GestureDetector(
                    onTap: () {
-                     Navigator.pop(context);
+                     Get.back();
                      Get.to(ProfileUpdate());
                    },
                    child: UserAccountsDrawerHeader(
                      decoration: BoxDecoration(
-                       color: AppColor.white,
+                       color: white,
                      ),
                      accountName: Text(
                        uName,
@@ -426,43 +428,46 @@ class _HomePageState extends State<HomePage> {
                      ),
                    ),
                  ),
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Container(
-                       margin: EdgeInsets.all(5),
-                       child: Card(
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.only(topRight:Radius.circular(20)),
-                         ),
-                         elevation: 5,
-                         child: IconButton(
-                             color: Colors.black,
-                             icon: Icon(Icons.file_copy_sharp),
-                             ),
-                       ),
-                     ),
-
-                     Align(
-                       alignment: Alignment.center,
-                       child: Text(
-                           "  Aptitude Test",
-                           style: TextStyle(fontSize: 18,color: AppColor.black)
-                       ),
-                     ),
-
-                     Expanded(
-                       child: Row(
-                         mainAxisAlignment: MainAxisAlignment.end,
-                         children: [
-                           IconButton(
+                 GestureDetector(
+                   onTap: (){
+                     Get.back();
+                     Get.to(QuizInstructionPage());
+                   },
+                   child: Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                       Container(
+                         margin: EdgeInsets.all(5),
+                         child: Card(
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.only(topRight:Radius.circular(20)),
+                           ),
+                           elevation: 5,
+                           child: IconButton(
                                color: Colors.black,
-                               icon: Icon(Icons.arrow_forward),
-                              ),
-                         ],
+                               icon: Icon(FontAwesomeIcons.fileAlt,color: buttonColor,),
+                               ),
+                         ),
                        ),
-                     ),
-                   ],
+
+                       Text(
+                           "  Aptitude Test",
+                           style: TextStyle(fontSize: 18,color: buttonColor)
+                       ),
+
+                       Expanded(
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                             IconButton(
+                                 color: Colors.black,
+                                 icon: Icon(FontAwesomeIcons.arrowAltCircleRight,color: buttonColor,),
+                                ),
+                           ],
+                         ),
+                       ),
+                     ],
+                   ),
                  ),
                  Divider(
                    indent: 10,
@@ -471,6 +476,7 @@ class _HomePageState extends State<HomePage> {
 
                  GestureDetector(
                   onTap: (){
+                    Get.back();
                     Get.to(PastTest());
                   },
                    child: Row(
@@ -485,17 +491,14 @@ class _HomePageState extends State<HomePage> {
                            elevation: 5,
                            child: IconButton(
                                color: Colors.black,
-                               icon: Icon(Icons.file_copy_sharp),
+                               icon: Icon(FontAwesomeIcons.fileAlt,color: buttonColor,),
                               ),
                          ),
                        ),
 
-                       Align(
-                         alignment: Alignment.center,
-                         child: Text(
-                           "  Past Test",
-                           style: TextStyle(fontSize: 18,color: AppColor.black)
-                         ),
+                       Text(
+                         "  Past Test",
+                         style: TextStyle(fontSize: 18,color: buttonColor)
                        ),
 
                        Expanded(
@@ -504,7 +507,7 @@ class _HomePageState extends State<HomePage> {
                            children: [
                              IconButton(
                                  color: Colors.black,
-                                 icon: Icon(Icons.arrow_forward),
+                                 icon: Icon(FontAwesomeIcons.arrowAltCircleRight,color: buttonColor,),
                                 ),
                            ],
                          ),
@@ -520,6 +523,7 @@ class _HomePageState extends State<HomePage> {
 
                  GestureDetector(
                    onTap: (){
+                    Get.back();
                      Get.to(ChangePassword());
                    },
                    child: Row(
@@ -534,17 +538,14 @@ class _HomePageState extends State<HomePage> {
                            elevation: 5,
                            child: IconButton(
                                color: Colors.black,
-                               icon: Icon(Icons.lock),
+                               icon: Icon(FontAwesomeIcons.key,color: buttonColor,),
                                ),
                          ),
                        ),
 
-                       Align(
-                         alignment: Alignment.center,
-                         child: Text(
-                             "  Change Password",
-                             style: TextStyle(fontSize: 18,color: AppColor.black)
-                         ),
+                       Text(
+                           "  Change Password",
+                           style: TextStyle(fontSize: 18,color: buttonColor)
                        ),
 
                        Expanded(
@@ -553,7 +554,7 @@ class _HomePageState extends State<HomePage> {
                            children: [
                              IconButton(
                                  color: Colors.black,
-                                 icon: Icon(Icons.arrow_forward),
+                                 icon: Icon(FontAwesomeIcons.arrowAltCircleRight,color: buttonColor,),
                                 ),
                            ],
                          ),
@@ -569,7 +570,7 @@ class _HomePageState extends State<HomePage> {
 
              GestureDetector(
                onTap: (){
-                 Navigator.pop(context);
+                 Get.back();
                 askToLogout();
                },
                child: Row(
@@ -584,17 +585,14 @@ class _HomePageState extends State<HomePage> {
                        elevation: 5,
                        child: IconButton(
                            color: Colors.black,
-                           icon: Icon(Icons.login_outlined),
+                           icon: Icon(Icons.login_outlined,color: buttonColor,),
                           ),
                      ),
                    ),
 
-                   Align(
-                     alignment: Alignment.center,
-                     child: Text(
-                         "  Logout",
-                         style: TextStyle(fontSize: 18,color: AppColor.black)
-                     ),
+                   Text(
+                       "  Logout",
+                       style: TextStyle(fontSize: 18,color: buttonColor)
                    ),
 
                    Expanded(
@@ -603,7 +601,7 @@ class _HomePageState extends State<HomePage> {
                        children: [
                              IconButton(
                              color: Colors.black,
-                             icon: Icon(Icons.arrow_forward),),
+                             icon: Icon(FontAwesomeIcons.arrowAltCircleRight,color: buttonColor,),),
                            ],
                      ),
                    ),

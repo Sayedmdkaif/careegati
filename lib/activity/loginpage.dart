@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:careergati/activity/HomePage.dart';
 import 'package:careergati/activity/forgetpassword.dart';
 import 'package:careergati/activity/loginwithnumber.dart';
@@ -9,6 +8,7 @@ import 'package:careergati/util/GlobalView.dart';
 import 'package:careergati/util/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/route_manager.dart';
 import 'package:loading_animations/loading_animations.dart';
 
@@ -95,8 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         showEmailWidget(emailController),
                         showPasswordWidget(passwordController),
                         showForgetPasswordText(),
-                        showLoginButton(
-                            emailController, passwordController),
+                        showLoginButton(emailController, passwordController),
                         showLoginWithText(),
                         showSocialIcons(),
                         showNewUserText()
@@ -110,14 +109,14 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Positioned(
-                left: GlobalView.padding,
-                right: GlobalView.padding,
+                left: padding,
+                right: padding,
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   radius: 60,
                   child: ClipRRect(
                       borderRadius:
-                          BorderRadius.all(Radius.circular(GlobalView.avatarRadius)),
+                          BorderRadius.all(Radius.circular(avatarRadius)),
                       child: Image.asset("assets/images/profilePic.webp")),
                 ),
               ),
@@ -147,28 +146,28 @@ class _LoginPageState extends State<LoginPage> {
         decoration: InputDecoration(
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
           labelText: 'Email',
           labelStyle: TextStyle(
             color: Colors.grey,
           ),
           helperText: 'Please Enter Email',
-          prefixIcon: Icon(Icons.email, color: AppColor.colorPrimary),
+          prefixIcon: Icon(FontAwesomeIcons.envelope, color: colorPrimary),
           hintStyle: TextStyle(color: Colors.grey),
           filled: true,
           fillColor: Colors.white70,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
         ),
       ),
@@ -197,18 +196,18 @@ class _LoginPageState extends State<LoginPage> {
         decoration: InputDecoration(
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
           labelText: 'Password',
           labelStyle: TextStyle(
             color: Colors.grey,
           ),
           helperText: 'Please Enter Password',
-          prefixIcon: Icon(Icons.lock_open, color: AppColor.colorPrimary),
+          prefixIcon: Icon(FontAwesomeIcons.key, color: colorPrimary),
           hintStyle: TextStyle(color: Colors.grey),
           filled: true,
           fillColor: Colors.white70,
@@ -216,7 +215,7 @@ class _LoginPageState extends State<LoginPage> {
               ? IconButton(
             icon: Icon(
               passwordVisible ? Icons.visibility_off : Icons.visibility,
-              color: AppColor.colorPrimary,
+              color: colorPrimary,
             ),
             onPressed: () {
               setState(() {
@@ -227,11 +226,11 @@ class _LoginPageState extends State<LoginPage> {
               : null,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: AppColor.colorPrimary),
+            borderSide: BorderSide(color: colorPrimary),
           ),
         ),
       ),
@@ -252,10 +251,10 @@ class _LoginPageState extends State<LoginPage> {
             {
 
 
-              if(!GlobalView.checkInternet())
+              if(!checkInternet())
                 {
 
-                  GlobalView.showSweetError("Please check your internet connection", context)
+                  showSweetError("Please check your internet connection", context)
 
                 }
               else
@@ -287,8 +286,8 @@ class _LoginPageState extends State<LoginPage> {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -319,7 +318,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: TextDecoration.none,
                 fontSize: 17.0,
                 fontFamily: 'Raleway',
-                color: AppColor.colorPrimary,
+                color: colorPrimary,
               ),
             )));
   }
@@ -383,7 +382,7 @@ Widget showNewUserText() {
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Raleway',
-                    color: AppColor.black,
+                    color: black,
                   ),
                 ))));
   }
@@ -403,7 +402,7 @@ Widget showNewUserText() {
           borderColor: Colors.white,
           borderSize: 3.0,
           size: 40.0,
-          backgroundColor: AppColor.colorPrimary,
+          backgroundColor: colorPrimary,
           duration: Duration(milliseconds: 500),
         ),
       ),

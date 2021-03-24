@@ -38,9 +38,9 @@ bool showLoading = false;
         ),
         child: ListView(
           children: [
-           GlobalView.toolBarWidget(context,true,false),
+          toolBarWidget(context,true,false),
             Container(
-              
+
               margin: EdgeInsets.only(top:30,left: 10,right: 10),
               child: Card(shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -129,25 +129,25 @@ Widget showEmailWidget(TextEditingController emailController) {
           color: Colors.grey,
         ),
         helperText: 'Please Enter Email',
-        prefixIcon: Icon(Icons.email, color: AppColor.colorPrimary),
+        prefixIcon: Icon(Icons.email, color: colorPrimary),
         hintStyle: TextStyle(color: Colors.grey),
         filled: true,
         fillColor: Colors.white70,
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(12.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: AppColor.colorPrimary),
+          borderSide: BorderSide(color: colorPrimary),
         ),
       ),
     ),
@@ -161,8 +161,8 @@ Widget showLoginButton() {
     child: RaisedButton(
       onPressed: () {
         if (formKey.currentState.validate()) {
-          if (!GlobalView.checkInternet()) {
-            GlobalView.showSweetError(
+          if (!checkInternet()) {
+           showSweetError(
                 "Please check your internet connection", context);
           } else {
 
@@ -180,8 +180,8 @@ Widget showLoginButton() {
         decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: <Color>[
-                AppColor.buttonColor,
-                AppColor.buttonColor,
+                buttonColor,
+                buttonColor,
               ],
             ),
             borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -212,7 +212,7 @@ Widget _onLoading(bool value) {
         borderColor: Colors.white,
         borderSize: 3.0,
         size: 40.0,
-        backgroundColor: AppColor.colorPrimary,
+        backgroundColor: colorPrimary,
         duration: Duration(milliseconds: 500),
       ),
     ),

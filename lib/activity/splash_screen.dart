@@ -42,8 +42,8 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 3),
         () => {
-              if (prefs.getString(GlobalView.isLogin) == "true")
-                {}
+              if (prefs.getString(isLogin) == "true")
+                {print('userisLogin')}
               else
                 {Get.to(IntroScreen())}
             });

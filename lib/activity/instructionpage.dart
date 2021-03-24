@@ -22,33 +22,33 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-        image: DecorationImage(
-        image: AssetImage("assets/images/starbg.png"),
-    fit: BoxFit.cover,
-    ),
-    ),
+          image: DecorationImage(
+            image: AssetImage("assets/images/starbg.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context,false ,true),
+            toolBarWidget(context, false, true),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Card(
+                    /* color:  Color(0xFFFFFFFF).withOpacity(0.8),*/
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Column(children: [
-                      GlobalView.showHeading( "PSYCHOMETRIC TEST"),
-                      GlobalView.showLine(1.3),
+                      showHeading("PSYCHOMETRIC TEST"),
+                      showLine(1.3),
                       selectLangHeading(),
                       showRadioWidget(),
-                      GlobalView.showLine(.7),
-                      showInstruction("1",AppString.introDesc1),
-                      showInstruction("2",AppString.introDesc1),
-                      showInstruction("3",AppString.introDesc1),
-                      showInstruction("4",AppString.introDesc1),
-                      showInstruction("5",AppString.introDesc1),
+                      showLine(.7),
+                      showInstruction("1", AppString.introDesc1),
+                      showInstruction("2", AppString.introDesc1),
+                      showInstruction("3", AppString.introDesc1),
+                      showInstruction("4", AppString.introDesc1),
+                      showInstruction("5", AppString.introDesc1),
                       showLoginButton()
-
                     ])))
           ],
         ),
@@ -70,7 +70,7 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
                 style: (TextStyle(fontSize: 15)),
               ),
               leading: Radio(
-                activeColor: AppColor.colorPrimary,
+                activeColor: colorPrimary,
                 value: 1,
                 groupValue: radioId,
                 onChanged: (value) {
@@ -89,7 +89,7 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
                 style: (TextStyle(fontSize: 15)),
               ),
               leading: Radio(
-                activeColor: AppColor.colorPrimary,
+                activeColor: colorPrimary,
                 value: 2,
                 groupValue: radioId,
                 onChanged: (value) {
@@ -104,7 +104,6 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
       ),
     );
   }
-
 
   Widget selectLangHeading() {
     return Padding(
@@ -122,14 +121,13 @@ class _QuizInstructionPageState extends State<QuizInstructionPage> {
     );
   }
 
-
-Widget showInstruction(String sn,String title) {
+  Widget showInstruction(String sn, String title) {
     return Padding(
-      padding: EdgeInsets.only(top: 10,left: 20,right: 10),
+      padding: EdgeInsets.only(top: 10, left: 20, right: 10),
       child: Align(
         alignment: Alignment.topLeft,
         child: Text(
-          sn+" . "+title,
+          sn + " . " + title,
           style: TextStyle(
             decoration: TextDecoration.none,
             fontSize: 16.0,
@@ -141,15 +139,13 @@ Widget showInstruction(String sn,String title) {
     );
   }
 
-
   Widget showLoginButton() {
     return Container(
       margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 30.0, bottom: 20.0),
       child: RaisedButton(
         onPressed: () {
-
           if (radioId == -1)
-            GlobalView.createSnackBar("Please select language", context);
+            createSnackBar("Please select language", context);
           else {
             List<Question> questions = [];
             List<dynamic> incorrectAnswers = [];
@@ -160,32 +156,40 @@ Widget showInstruction(String sn,String title) {
 
             questions.add(Question(
                 "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
-                "Subscriber", incorrectAnswers, "1"));
+                "Subscriber",
+                incorrectAnswers,
+                "1"));
             questions.add(Question(
                 "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
-                "Subscriber", incorrectAnswers, "2"));
+                "Subscriber",
+                incorrectAnswers,
+                "2"));
             questions.add(Question(
                 "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
-                "Subscriber", incorrectAnswers, "3"));
+                "Subscriber",
+                incorrectAnswers,
+                "3"));
             questions.add(Question(
                 "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card ?",
-                "Subscriber", incorrectAnswers, "4"));
+                "Subscriber",
+                incorrectAnswers,
+                "4"));
 
-
-            Get.to(QuizPage(questions: questions,));
+            Get.to(QuizPage(
+              questions: questions,
+            ));
           }
-
         },
         textColor: Colors.white,
         padding: const EdgeInsets.all(0.0),
         shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: Container(
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -201,8 +205,4 @@ Widget showInstruction(String sn,String title) {
       ),
     );
   }
-
-
-
-
 }

@@ -82,8 +82,8 @@ class _IntroScreenState extends State<IntroScreen> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               color: (index == _currentPage)
-                                  ? AppColor.buttonColor
-                                  : AppColor.buttonColor.withOpacity(0.5)));
+                                  ? buttonColor
+                                  : buttonColor.withOpacity(0.5)));
                     })),
                 InkWell(
 
@@ -98,11 +98,11 @@ class _IntroScreenState extends State<IntroScreen> {
                       width: (_currentPage == (introPages.length - 1)) ? 200 : 75,
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [AppColor.buttonColor, AppColor.buttonColor],
+                            colors: [buttonColor, buttonColor],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
                           ),
-                          color: AppColor.colorPrimary,
+                          color: colorPrimary,
                           borderRadius: BorderRadius.circular(35)),
                       child: (_currentPage == (introPages.length - 1))
                           ? Text(

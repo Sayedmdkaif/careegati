@@ -29,7 +29,7 @@ class _SampleResultPageState extends State<SampleResultPage> {
         ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context, false, true),
+            toolBarWidget(context, false, true),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10,bottom: 20),
                 child: Card(
@@ -37,12 +37,12 @@ class _SampleResultPageState extends State<SampleResultPage> {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Column(children: [
-                      GlobalView.showHeading("PSYCHOMETRIC TEST"),
+                      showHeading("PSYCHOMETRIC TEST"),
                       SizedBox(
                         height: 15,
                       ),
                       showDateTimerWidget(),
-                      GlobalView.showLine(1.3),
+                      showLine(1.3),
                       SizedBox(
                         height: 20,
                       ),
@@ -63,8 +63,8 @@ class _SampleResultPageState extends State<SampleResultPage> {
                       showLoginButton(),
 
                       showText(),
-                      showInstruction("1","Get detailed Career Gati report by making a small payment of just Rs. 1980.",AppColor.black),
-                      showInstruction("2","If a user refers 10 people who buy reports, then he will be eligible for one free report",AppColor.black),
+                      showInstruction("1","Get detailed Career Gati report by making a small payment of just Rs. 1980.",black),
+                      showInstruction("2","If a user refers 10 people who buy reports, then he will be eligible for one free report",black),
 
                       SizedBox(
                         height: 20,
@@ -177,8 +177,8 @@ class _SampleResultPageState extends State<SampleResultPage> {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -224,7 +224,7 @@ class _SampleResultPageState extends State<SampleResultPage> {
             decoration: TextDecoration.none,
             fontSize: 16.0,
             fontFamily: 'Raleway',
-            color: AppColor.redColor,
+            color: redColor,
           ),
         ),
       ),

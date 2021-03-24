@@ -29,7 +29,7 @@ class _PastTestState extends State<PastTest> {
     ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context,true ,true),
+            toolBarWidget(context,true ,false),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10,bottom: 20),
                 child: Card(
@@ -37,19 +37,21 @@ class _PastTestState extends State<PastTest> {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Column(children: [
-                      GlobalView.showHeading( "PAST TEST"),
+                      showHeading( "PAST TEST"),
                       SizedBox(height: 60,),
                       showDateRerpotWidget(),
-                      GlobalView.showLine(.7),
-                      showResultWidget("10/01/2021","Report 1"),
+                      showLine(.7),
+                      showResultWidget("10/01/2021","Report 1",false),
                       SizedBox(height: 15,),
-                      showResultWidget("10/01/2021","Report 1"),
+                      showResultWidget("11/01/2021","Report 1",true),
                       SizedBox(height: 15,),
-                      showResultWidget("10/01/2021","Report 1"),
+                      showResultWidget("12/01/2021","Report 1",false),
                       SizedBox(height: 15,),
-                      showResultWidget("10/01/2021","Report 1"),
+                      showResultWidget("13/01/2021","Report 1",true),
                       SizedBox(height: 15,),
-                      showResultWidget("10/01/2021","Report 1"),
+                      showResultWidget("14/01/2021","Report 1",false),
+                      SizedBox(height: 15,),
+                      showResultWidget("15/01/2021","Report 1",true),
                       SizedBox(height: 65,),
 
 
@@ -95,12 +97,14 @@ class _PastTestState extends State<PastTest> {
   }
 
 
-Widget showResultWidget(String date,String name) {
+Widget showResultWidget(String date,String name,bool value) {
+
+
+
     return Container(
 
       margin: EdgeInsets.only(left: 20,right: 20),
-
-      color: AppColor.gray,
+      color: value==true ?  gray: white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -113,7 +117,7 @@ Widget showResultWidget(String date,String name) {
               fontSize: 18.0,
               fontFamily: 'Raleway',
               fontWeight: FontWeight.w500,
-              color: AppColor.buttonColor,
+              color: buttonColor,
             ),
           ),
 
@@ -124,7 +128,7 @@ Widget showResultWidget(String date,String name) {
               fontSize: 18.0,
               fontFamily: 'Raleway',
               fontWeight: FontWeight.w500,
-              color: AppColor.lightGray,
+              color: lightGray,
             ),
           )
         ],

@@ -30,7 +30,7 @@ class _ExperiencePageState extends State<ExperiencePage> {
     ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context,true ,false),
+           toolBarWidget(context,true ,false),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Card(
@@ -40,8 +40,8 @@ class _ExperiencePageState extends State<ExperiencePage> {
                     child: Column(children: [
 
                       SizedBox(height: 30,),
-                      GlobalView.boxImage("assets/images/experiencePic.webp"),
-                      GlobalView.showHeading("EXPERIENCE DETAILS"),
+                     boxImage("assets/images/experiencePic.webp"),
+                     showHeading("EXPERIENCE DETAILS"),
 
                       showLoginButton()
 
@@ -77,8 +77,8 @@ class _ExperiencePageState extends State<ExperiencePage> {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -101,7 +101,7 @@ class _ExperiencePageState extends State<ExperiencePage> {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 10),
       color: Colors.white,
-      child: (Divider(thickness: d, color: AppColor.subTitleTextColor)),
+      child: (Divider(thickness: d, color: subTitleTextColor)),
     );
   }
 }

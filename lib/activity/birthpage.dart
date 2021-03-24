@@ -51,7 +51,7 @@ class _BirthPageState extends State<BirthPage> {
         ),
         child: ListView(
           children: [
-            GlobalView.toolBarWidget(context, true, false),
+            toolBarWidget(context, true, false),
             Container(
                 margin: EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Card(
@@ -62,8 +62,8 @@ class _BirthPageState extends State<BirthPage> {
                       SizedBox(
                         height: 0,
                       ),
-                      GlobalView.boxImage("assets/images/astoPic.webp"),
-                      GlobalView.showHeading("ENTER YOUR BIRTH DETAILS"),
+                     boxImage("assets/images/astoPic.webp"),
+                     showHeading("ENTER YOUR BIRTH DETAILS"),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -145,7 +145,7 @@ class _BirthPageState extends State<BirthPage> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColor.colorPrimary,
+          color: colorPrimary,
           style: BorderStyle.solid,
         ),
         borderRadius: BorderRadius.circular(5.0),
@@ -156,7 +156,7 @@ class _BirthPageState extends State<BirthPage> {
         child: DropdownButtonFormField(
           decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.colorPrimary))),
+                  borderSide: BorderSide(color: colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
           hint: Text('  H'),
@@ -167,7 +167,7 @@ class _BirthPageState extends State<BirthPage> {
               selectedHour = newValue;
             });
           },
-          items: GlobalView.getHours().map((location) {
+          items:getHours().map((location) {
             return DropdownMenuItem(
               child: new Text(location),
               value: location,
@@ -182,7 +182,7 @@ class _BirthPageState extends State<BirthPage> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColor.colorPrimary,
+          color: colorPrimary,
           style: BorderStyle.solid,
           width: 1,
         ),
@@ -194,7 +194,7 @@ class _BirthPageState extends State<BirthPage> {
         child: DropdownButtonFormField(
           decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.colorPrimary))),
+                  borderSide: BorderSide(color: colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
           hint: Text('  M'),
@@ -205,7 +205,7 @@ class _BirthPageState extends State<BirthPage> {
               selectedMinute = newValue;
             });
           },
-          items: GlobalView.getMinutes().map((location) {
+          items:getMinutes().map((location) {
             return DropdownMenuItem(
               child: new Text(location),
               value: location,
@@ -220,7 +220,7 @@ class _BirthPageState extends State<BirthPage> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColor.colorPrimary,
+          color: colorPrimary,
           style: BorderStyle.solid,
           width: 1,
         ),
@@ -232,7 +232,7 @@ class _BirthPageState extends State<BirthPage> {
         child: DropdownButtonFormField(
           decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.colorPrimary))),
+                  borderSide: BorderSide(color: colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
           hint: Text('  S'),
@@ -243,7 +243,7 @@ class _BirthPageState extends State<BirthPage> {
               selectedSecond = newValue;
             });
           },
-          items: GlobalView.getMinutes().map((location) {
+          items:getMinutes().map((location) {
             return DropdownMenuItem(
               child: new Text(location),
               value: location,
@@ -278,25 +278,25 @@ class _BirthPageState extends State<BirthPage> {
             ),
             helperText: 'Please Enter Place Of Birth',
             prefixIcon:
-                Icon(Icons.place_outlined, color: AppColor.colorPrimary),
+                Icon(Icons.place_outlined, color: colorPrimary),
             hintStyle: TextStyle(color: Colors.grey),
             filled: true,
             fillColor: Colors.white70,
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(color: AppColor.colorPrimary),
+              borderSide: BorderSide(color: colorPrimary),
             ),
           ),
         ),
@@ -308,7 +308,7 @@ class _BirthPageState extends State<BirthPage> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColor.colorPrimary,
+          color: colorPrimary,
           style: BorderStyle.solid,
           width: 1,
         ),
@@ -320,7 +320,7 @@ class _BirthPageState extends State<BirthPage> {
         child: DropdownButtonFormField(
           decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.colorPrimary))),
+                  borderSide: BorderSide(color: colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
           hint: Text('  DD'),
@@ -331,7 +331,7 @@ class _BirthPageState extends State<BirthPage> {
               selectedDate = newValue;
             });
           },
-          items: GlobalView.getDates().map((location) {
+          items:getDates().map((location) {
             return DropdownMenuItem(
               child: new Text(location),
               value: location,
@@ -346,7 +346,7 @@ class _BirthPageState extends State<BirthPage> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColor.colorPrimary,
+          color: colorPrimary,
           style: BorderStyle.solid,
         ),
         borderRadius: BorderRadius.circular(5.0),
@@ -357,7 +357,7 @@ class _BirthPageState extends State<BirthPage> {
         child: DropdownButtonFormField(
           decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.colorPrimary))),
+                  borderSide: BorderSide(color: colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
           hint: Text('  MM'),
@@ -368,7 +368,7 @@ class _BirthPageState extends State<BirthPage> {
               selectedMonth = newValue;
             });
           },
-          items: GlobalView.getMonth().map((location) {
+          items:getMonth().map((location) {
             return DropdownMenuItem(
               child: new Text(location),
               value: location,
@@ -383,7 +383,7 @@ class _BirthPageState extends State<BirthPage> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColor.colorPrimary,
+          color: colorPrimary,
           style: BorderStyle.solid,
           width: 1,
         ),
@@ -395,7 +395,7 @@ class _BirthPageState extends State<BirthPage> {
         child: DropdownButtonFormField(
           decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.colorPrimary))),
+                  borderSide: BorderSide(color: colorPrimary))),
           iconEnabledColor: Colors.black,
           isExpanded: true,
           hint: Text('  YY'),
@@ -406,7 +406,7 @@ class _BirthPageState extends State<BirthPage> {
               selectedYear = newValue;
             });
           },
-          items: GlobalView.getYear(int.parse(currentYear)).map((location) {
+          items:getYear(int.parse(currentYear)).map((location) {
             return DropdownMenuItem(
               child: new Text(location),
               value: location,
@@ -446,8 +446,8 @@ class _BirthPageState extends State<BirthPage> {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -468,7 +468,7 @@ class _BirthPageState extends State<BirthPage> {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 10),
       color: Colors.white,
-      child: (Divider(thickness: d, color: AppColor.subTitleTextColor)),
+      child: (Divider(thickness: d, color: subTitleTextColor)),
     );
   }
 }

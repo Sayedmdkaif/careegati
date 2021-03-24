@@ -64,7 +64,7 @@ class _QuizPageState extends State<QuizPage> {
             children: [
               ListView(
                 children: [
-                  GlobalView.toolBarWidget(context, false, false),
+                  toolBarWidget(context, false, false),
                   Container(
                     margin: EdgeInsets.only(top: 30, left: 10, right: 10,bottom: 20),
                     child: Card(
@@ -105,7 +105,7 @@ class _QuizPageState extends State<QuizPage> {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 0),
       color: Colors.white,
-      child: (Divider(thickness: d, color: AppColor.subTitleTextColor)),
+      child: (Divider(thickness: d, color: subTitleTextColor)),
     );
   }
 
@@ -146,7 +146,7 @@ class _QuizPageState extends State<QuizPage> {
       /*  _key.currentState.showSnackBar(SnackBar(
        // content: Text("You must select an answer to continue."),
       ));*/
-      GlobalView.createSnackBar(
+      createSnackBar(
           "You must select an answer to continue.", context);
 
       return;
@@ -177,7 +177,7 @@ class _QuizPageState extends State<QuizPage> {
       child: RaisedButton(
         onPressed: () async {
 
-          GlobalView.showVibration();
+          showVibration();
           _nextSubmit();
         },
         textColor: Colors.white,
@@ -188,8 +188,8 @@ class _QuizPageState extends State<QuizPage> {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -224,7 +224,7 @@ class _QuizPageState extends State<QuizPage> {
       margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 30.0, bottom: 20.0),
       child: RaisedButton(
         onPressed: () {
-          GlobalView.showVibration();
+          showVibration();
           _previousSubmit();
         },
         textColor: Colors.white,
@@ -235,8 +235,8 @@ class _QuizPageState extends State<QuizPage> {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  AppColor.buttonColor,
-                  AppColor.buttonColor,
+                  buttonColor,
+                  buttonColor,
                 ],
               ),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -268,7 +268,7 @@ class _QuizPageState extends State<QuizPage> {
     return Row(
       children: <Widget>[
         CircleAvatar(
-          backgroundColor: AppColor.colorPrimary,
+          backgroundColor: buttonColor,
           child: Text("${_currentIndex + 1}"),
         ),
         SizedBox(
@@ -355,6 +355,7 @@ class _QuizPageState extends State<QuizPage> {
           ...options.map((option) =>
 
               RadioListTile(
+                activeColor: buttonColor,
                 title: Row(
                   children: [
                     if (widget.questions[_currentIndex].quizCase == "1" ||
@@ -501,7 +502,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void onEnd() {
     print('onEnd');
-    GlobalView.showSweetError("Quiz time is over", context);
+    showSweetError("Quiz time is over", context);
   }
 
 
